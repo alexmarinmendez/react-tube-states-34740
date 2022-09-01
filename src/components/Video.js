@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Video = ({thumbnail, title, dateAdded, channel, description, start, report}) => {
     const [rate, setRate] = useState(start);    //hook
-    // const [isValid, setIsValid] = useState(false);
-    // const [show, setShow] = useState(0);
-    // const [title, setTitle] = useState("Coder");
+    const [isValid, setIsValid] = useState(false);
 
     const handleClick = () => {
         setRate(rate+1);
     }
+
+    //componentDidUpdate
+    useEffect(() => {
+        console.log(`Video ${title} se actualizó`)
+    }, [rate, isValid]);
 
     return (
         <div className="video-container">
